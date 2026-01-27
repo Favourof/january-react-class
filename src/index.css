@@ -17,3 +17,71 @@ li {
   list-style-type: none;
   margin-left: 10px;
 }
+
+/* General app container */
+.app-container {
+  max-width: 600px;
+  margin: 40px auto;
+  padding: 20px;
+  background: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  font-family: Arial, sans-serif;
+}
+
+/* Heading */
+.app-container h2 {
+  text-align: center;
+  color: #333;
+  margin-bottom: 20px;
+}
+
+/* UserForm styles */
+.user-form {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.user-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  flex: 1;
+  font-size: 14px;
+}
+
+.user-form button {
+  padding: 10px 15px;
+  background: #4caf50;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.user-form button:hover {
+  background: #45a049;
+}
+
+/* UserList styles */
+.user-list {
+  list-style: none;
+  padding: 0;
+}
+
+.user-list li {
+  background: #fff;
+  margin: 8px 0;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  transition: transform 0.2s ease;
+}
+
+.user-list li:hover {
+  transform: scale(1.02);
+  background: #f1f1f1;
+}

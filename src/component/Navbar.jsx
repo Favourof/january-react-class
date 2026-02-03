@@ -1,8 +1,8 @@
 import { Link, NavLink } from "react-router"
 import styles from "../modulesCss/Navbar.module.css"
-import { useState } from "react";
+// import { useState } from "react";
 function Navbar() {
-    const [laptop, setlaptop] = useState({ id: 6, name: "dell", price: 100 });
+    // const [laptop, setlaptop] = useState({ id: 6, name: "dell", price: 100 });
     return (
         <div className={styles.parent}>
             <div>Logo</div>
@@ -26,6 +26,7 @@ function Navbar() {
                     <li> <Link to={"/contact"}>Contact</Link></li>
                     <li> <Link to={"/faq"}>  FAQ</Link></li>
                     <li> <Link to={"/user"}>  user</Link></li>
+                    <li><Link to={"/login"}>Login</Link></li>
                 </ul>
             </div>
         </div>

@@ -9,6 +9,7 @@ import { Contact } from "./Pages/Contact"
 import { Faq } from "./Pages/Faq"
 import { User } from "./Pages/User"
 import { Login } from "./Pages/Login"
+import { AddProduct } from "./Pages/AddProduct"
 
 
 function App() {
@@ -27,6 +28,7 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/user/:id" element={<User />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/product" element={<AddProduct />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
 

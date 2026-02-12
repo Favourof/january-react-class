@@ -82,8 +82,28 @@ export const Product = () => {
                 <div className="product-grid">
                     {product.map((item, i) => (
                         <article className="product-card" key={item.id || i}>
-                            <h3>{item.title}</h3>
-                            <p>{item.description}</p>
+                            <div className="product-card-media">
+                                <img
+                                    src={item.image}
+                                    alt={item.title || 'Product image'}
+                                    loading="lazy"
+                                />
+                            </div>
+
+                            <div className="product-card-body">
+                                <p className="product-card-category">
+                                    {item.category || 'General'}
+                                </p>
+                                <h3>{item.title}</h3>
+                                <p className="product-card-description">{item.description}</p>
+                            </div>
+
+                            <div className="product-card-footer">
+                                <p className="product-card-price">
+                                    ${Number(item.price || 0).toFixed(2)}
+                                </p>
+                                <span className="product-card-meta">Item #{item.id || i + 1}</span>
+                            </div>
                         </article>
                     ))}
                 </div>

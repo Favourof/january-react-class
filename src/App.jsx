@@ -10,6 +10,7 @@ import { Faq } from "./Pages/Faq"
 import { User } from "./Pages/User"
 import { Login } from "./Pages/Login"
 import { AddProduct } from "./Pages/AddProduct"
+import { ProductDetailes } from "./component/productDetailes"
 
 
 function App() {
@@ -29,6 +30,7 @@ function App() {
         <Route path="/user/:id" element={<User />} />
         <Route path="/login" element={<Login />} />
         <Route path="/product" element={<AddProduct />} />
+        <Route path="/product/details" element={<ProductDetailes />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>
 

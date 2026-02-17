@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import './Product.css';
 import { publicUrl } from '../api/api';
+import { useNavigate } from 'react-router';
 
 export const Product = () => {
     const [product, setProduct] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState('');
+    const navigate = useNavigate()
 
     const fetchProduct = async () => {
         setIsLoading(true);
@@ -28,6 +30,10 @@ export const Product = () => {
             setIsLoading(false);
         }
     };
+    const ProductDetailes = (item) => {
+        localStorage.setItem('product', JSON.stringify(item))
+        navigate('product/details')
+    }
 
     useEffect(() => {
         fetchProduct();
@@ -81,7 +87,7 @@ export const Product = () => {
             {!isLoading && !error && product.length > 0 && (
                 <div className="product-grid">
                     {product.map((item, i) => (
-                        <article className="product-card" key={item.id || i}>
+                        <article onClick={() => ProductDetailes(item)} className="product-card" key={item.id || i}>
                             <div className="product-card-media">
                                 <img
                                     src={item.image}

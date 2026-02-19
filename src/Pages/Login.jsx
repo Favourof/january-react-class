@@ -1,7 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from 'react-router';
 import { publicUrl } from '../api/api';
 import './Login.css';
+import { userContext } from '../context/context';
 
 const LOGIN_ENDPOINT = import.meta.env.VITE_LOGIN_ENDPOINT || 'auth/login';
 
@@ -11,6 +12,7 @@ export const Login = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const { setUser } = useContext(userContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -41,13 +43,14 @@ export const Login = () => {
 
         setLoading(true);
 
+
         try {
             const response = await publicUrl.post(LOGIN_ENDPOINT, {
                 email: formData.email.trim(),
                 password: formData.password,
             });
 
-            console.log(response);
+            // console.log("here is response", response.data.user);
 
 
             const token =
@@ -59,10 +62,12 @@ export const Login = () => {
             if (token) {
                 localStorage.setItem('token', token);
             }
-
+            setUser(response.data.user)
             setSuccess('Login successful. Redirecting...');
 
             navigate("/")
+
+
 
         } catch (err) {
             const message =

@@ -1,11 +1,19 @@
 import { Link, NavLink } from "react-router"
 import styles from "../modulesCss/Navbar.module.css"
+import { useContext } from "react";
+import { userContext } from "../context/context";
+// import { userContext } from "../context/context";
 // import { useState } from "react";
 function Navbar() {
+    // const { user } = userContext()
+    const { user } = useContext(userContext)
+
+    console.log(user, 'from navbar');
+
     // const [laptop, setlaptop] = useState({ id: 6, name: "dell", price: 100 });
     return (
         <div className={styles.parent}>
-            <div>Logo</div>
+            <div>Logo {user.name}</div>
             <div>
                 <ul>
                     <li> <Link to={"/"}> Home</Link></li>

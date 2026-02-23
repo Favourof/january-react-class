@@ -8,7 +8,7 @@ const LOGIN_ENDPOINT = import.meta.env.VITE_LOGIN_ENDPOINT || 'product';
 
 export const AddProduct = () => {
     const navigate = useNavigate();
-    const [formData, setFormData] = useState({ title: '', description: '', category: '', image: "", price: '' });
+    const [formData, setFormData] = useState({ title: '', description: '', category: '', price: '' });
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
@@ -43,12 +43,7 @@ export const AddProduct = () => {
 
         try {
             const response = await privateUrl.post(LOGIN_ENDPOINT, formDatas);
-
             console.log(response);
-
-
-
-
             setSuccess('Product Added successful. Redirecting...');
 
             navigate("/")

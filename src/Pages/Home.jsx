@@ -11,7 +11,7 @@ export const Home = () => {
     // setUser(isUser)
     return (
         <div>
-            <h1>Hello {user.username}</h1>
+            <h1>Hello {user?.username}</h1>
             <h1>THis is the home Page</h1>
             {/* <Timer /> */}
             <Product />

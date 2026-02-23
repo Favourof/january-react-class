@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { privateUrl } from '../api/api';
 import './Login.css';
+import { usePreviewImage } from '../hooks/usePreviewImage';
 
 const LOGIN_ENDPOINT = import.meta.env.VITE_LOGIN_ENDPOINT || 'product';
 
@@ -11,44 +12,37 @@ export const AddProduct = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
+    const formDatas = new FormData()
+    const { imageFile, preview, handleFileChange } = usePreviewImage()
+
+
+
+
 
     const handleChange = (e) => {
+
+
         const { name, value } = e.target;
         setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
-    // const validateForm = () => {
-    //     if (!formData.email.trim() || !formData.password.trim()) {
-    //         setError('Email and password are required.');
-    //         return false;
-    //     }
-
-    //     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    //     if (!emailRegex.test(formData.email)) {
-    //         setError('Please enter a valid email address.');
-    //         return false;
-    //     }
-
-    //     return true;
-    // };
-
     const handleSubmit = async (e) => {
         e.preventDefault();
+        console.log(imageFile, 'from custom hook');
+
         setError('');
         setSuccess('');
 
-        // if (!validateForm()) return;
 
         setLoading(true);
+        formDatas.append("title", formData.title.trim())
+        formDatas.append("description", formData.description.trim())
+        formDatas.append("category", formData.category)
+        formDatas.append("price", formData.price)
+        if (imageFile) formDatas.append("image", imageFile)
 
         try {
-            const response = await privateUrl.post(LOGIN_ENDPOINT, {
-                title: formData.title.trim(),
-                description: formData.description.trim(),
-                image: formData.image,
-                category: formData.category,
-                price: formData.price.trim()
-            });
+            const response = await privateUrl.post(LOGIN_ENDPOINT, formDatas);
 
             console.log(response);
 
@@ -121,12 +115,12 @@ export const AddProduct = () => {
                     <input
                         id="image"
                         name="image"
-                        type="text"
-                        placeholder="Enter your image"
-                        value={formData.image}
-                        onChange={handleChange}
+                        type="file"
+                        accept='image/*'
+                        onChange={handleFileChange}
                         autoComplete="current-image"
                     />
+                    {imageFile && <img src={preview} style={{ width: "100%" }} />}
 
                     <label htmlFor="price">price</label>
                     <input

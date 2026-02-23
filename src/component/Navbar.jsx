@@ -13,7 +13,7 @@ function Navbar() {
     // const [laptop, setlaptop] = useState({ id: 6, name: "dell", price: 100 });
     return (
         <div className={styles.parent}>
-            <div>Logo {user.name}</div>
+            <div>Logo {user?.name}</div>
             <div>
                 <ul>
                     <li> <Link to={"/"}> Home</Link></li>

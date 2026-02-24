@@ -11,6 +11,7 @@ import { User } from "./Pages/User"
 import { Login } from "./Pages/Login"
 import { AddProduct } from "./Pages/AddProduct"
 import { ProductDetailes } from "./component/productDetailes"
+import { ProtectedRoute } from "./component/ProtectedRoute"
 
 
 function App() {
@@ -23,13 +24,20 @@ function App() {
     <>
       <Navbar />
       <Routes>
-        <Route path="/" element={<Home />} />
+
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/faq" element={<Faq />} />
         <Route path="/user/:id" element={<User />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/product" element={<AddProduct />} />
+
+        {/* protected routes */}
+        <Route element={<ProtectedRoute />}>
+          <Route path="/product" element={<AddProduct />} />
+          <Route path="/" element={<Home />} />
+
+        </Route>
+
         <Route path="/product/details" element={<ProductDetailes />} />
         <Route path="*" element={<h1>Page not found</h1>} />
       </Routes>

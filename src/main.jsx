@@ -6,7 +6,7 @@ import { BrowserRouter } from 'react-router'
 import { UserProvider } from './context/UserProvider.jsx'
 
 createRoot(document.getElementById('root')).render(
-  <StrictMode>
+  // <StrictMode>
     <BrowserRouter>
       <UserProvider>
         <App />
@@ -14,6 +14,6 @@ createRoot(document.getElementById('root')).render(
 
     </BrowserRouter>
 
-    {/* <AppTwo /> */}
-  </StrictMode>,
+ 
+  // {/* </StrictMode>, */}
 )

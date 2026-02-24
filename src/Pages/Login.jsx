@@ -12,7 +12,7 @@ export const Login = () => {
     const [loading, setLoading] = useState(false);
     const [error, setError] = useState('');
     const [success, setSuccess] = useState('');
-    const { setUser } = useContext(userContext)
+    const { setUser, login } = useContext(userContext)
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -58,11 +58,11 @@ export const Login = () => {
                 response?.data?.accessToken ||
                 response?.data?.jwt ||
                 '';
+            const user = response?.data?.user
+            login({ user, token })
 
-            if (token) {
-                localStorage.setItem('token', token);
-            }
-            setUser(response.data.user)
+
+            // setUser(response.data.user)
             setSuccess('Login successful. Redirecting...');
 
             navigate("/")

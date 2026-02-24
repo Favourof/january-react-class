@@ -6,9 +6,8 @@ import { userContext } from "../context/context";
 // import { useState } from "react";
 function Navbar() {
     // const { user } = userContext()
-    const { user } = useContext(userContext)
-
-    console.log(user, 'from navbar');
+    const { user, isAuthenticated, logout } = useContext(userContext)
+    
 
     // const [laptop, setlaptop] = useState({ id: 6, name: "dell", price: 100 });
     return (
@@ -34,7 +33,8 @@ function Navbar() {
                     <li> <Link to={"/contact"}>Contact</Link></li>
                     <li> <Link to={"/faq"}>  FAQ</Link></li>
                     <li> <Link to={"/user"}>  user</Link></li>
-                    <li><Link to={"/login"}>Login</Link></li>
+                    {isAuthenticated?  <button onClick={() => logout()}>log out</button> :   <li><Link to={"/login"}>Login</Link></li>}
+                  
                 </ul>
             </div>
         </div>

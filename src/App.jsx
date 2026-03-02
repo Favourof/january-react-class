@@ -12,6 +12,7 @@ import { Login } from "./Pages/Login"
 import { AddProduct } from "./Pages/AddProduct"
 import { ProductDetailes } from "./component/productDetailes"
 import { ProtectedRoute } from "./component/ProtectedRoute"
+import { ReactForm } from "./component/ReactForm"
 
 
 function App() {
@@ -30,6 +31,8 @@ function App() {
         <Route path="/faq" element={<Faq />} />
         <Route path="/user/:id" element={<User />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/form" element={<ReactForm />} />
+
 
         {/* protected routes */}
         <Route element={<ProtectedRoute />}>
